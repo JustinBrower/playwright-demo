@@ -1,9 +1,15 @@
 [
   {
     "name": "AirMax Runner",
-    "size": [8, 9, 10, 11, 12],
+    "size": [
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
     "price": 129.99,
-    "imageUrl": "https://example.com/images/airmax-runner.jpg",
+    "imageUrl": "/src/data/images/1.avif",
     "category": "men",
     "brand": "Nike",
     "color": "Black/Red",
@@ -12,9 +18,14 @@
   },
   {
     "name": "CloudStep Comfort",
-    "size": [6, 7, 8, 9],
+    "size": [
+      6,
+      7,
+      8,
+      9
+    ],
     "price": 89.99,
-    "imageUrl": "https://example.com/images/cloudstep-comfort.jpg",
+    "imageUrl": "/src/data/images/2.jpg",
     "category": "women",
     "brand": "Clarks",
     "color": "Beige",
@@ -23,9 +34,15 @@
   },
   {
     "name": "TrailBlazer XT",
-    "size": [7, 8, 9, 10, 11],
+    "size": [
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
     "price": 149.99,
-    "imageUrl": "https://example.com/images/trailblazer-xt.jpg",
+    "imageUrl": "/src/data/images/3.jpeg",
     "category": "men",
     "brand": "Merrell",
     "color": "Gray/Orange",
@@ -34,9 +51,14 @@
   },
   {
     "name": "Sparkle Steps",
-    "size": [1, 2, 3, 4],
+    "size": [
+      1,
+      2,
+      3,
+      4
+    ],
     "price": 49.99,
-    "imageUrl": "https://example.com/images/sparkle-steps.jpg",
+    "imageUrl": "/src/data/images/4.avif",
     "category": "kids",
     "brand": "Skechers",
     "color": "Pink",
@@ -45,9 +67,14 @@
   },
   {
     "name": "Urban Glide",
-    "size": [9, 10, 11, 12],
+    "size": [
+      9,
+      10,
+      11,
+      12
+    ],
     "price": 119.99,
-    "imageUrl": "https://example.com/images/urban-glide.jpg",
+    "imageUrl": "/src/data/images/5.webp",
     "category": "men",
     "brand": "Adidas",
     "color": "White/Black",
@@ -56,9 +83,14 @@
   },
   {
     "name": "Ballet Ease",
-    "size": [5, 6, 7, 8],
+    "size": [
+      5,
+      6,
+      7,
+      8
+    ],
     "price": 59.99,
-    "imageUrl": "https://example.com/images/ballet-ease.jpg",
+    "imageUrl": "/src/data/images/6.avif",
     "category": "women",
     "brand": "Naturalizer",
     "color": "Nude",
@@ -67,9 +99,13 @@
   },
   {
     "name": "Mini Explorer",
-    "size": [10, 11, 12],
+    "size": [
+      10,
+      11,
+      12
+    ],
     "price": 39.99,
-    "imageUrl": "https://example.com/images/mini-explorer.jpg",
+    "imageUrl": "/src/data/images/7.avif",
     "category": "kids",
     "brand": "Columbia",
     "color": "Navy/Green",
@@ -78,9 +114,14 @@
   },
   {
     "name": "Retro Court",
-    "size": [7, 8, 9, 10],
+    "size": [
+      7,
+      8,
+      9,
+      10
+    ],
     "price": 99.99,
-    "imageUrl": "https://example.com/images/retro-court.jpg",
+    "imageUrl": "/src/data/images/8.jpg",
     "category": "men",
     "brand": "Puma",
     "color": "White/Blue",
@@ -89,9 +130,14 @@
   },
   {
     "name": "Zen Slip-On",
-    "size": [6, 7, 8, 9],
+    "size": [
+      6,
+      7,
+      8,
+      9
+    ],
     "price": 74.99,
-    "imageUrl": "https://example.com/images/zen-slipon.jpg",
+    "imageUrl": "/src/data/images/9.jpg",
     "category": "women",
     "brand": "Vionic",
     "color": "Gray",
@@ -100,9 +146,13 @@
   },
   {
     "name": "Lil' Kicks",
-    "size": [5, 6, 7],
+    "size": [
+      5,
+      6,
+      7
+    ],
     "price": 29.99,
-    "imageUrl": "https://example.com/images/lil-kicks.jpg",
+    "imageUrl": "/src/data/images/10.webp",
     "category": "kids",
     "brand": "Stride Rite",
     "color": "Red/White",
