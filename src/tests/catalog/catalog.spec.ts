@@ -1,4 +1,4 @@
-import { test } from "./fixtures";
+import { test } from "../fixtures";
 import { expect } from "@playwright/test";
 
 const timeout = 2000;

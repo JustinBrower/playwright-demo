@@ -79,6 +79,7 @@ export function Catalog() {
                         bgGradient="linear(to-r, teal.300, blue.400, purple.400)"
                         bgClip="text"
                         fontWeight="extrabold"
+                        pb={4}
                     >
                         Explore the Catalog
                     </Heading>
@@ -88,13 +89,14 @@ export function Catalog() {
                 </Box>
 
                 <SimpleGrid minChildWidth="260px" spacing="24px">
-                    {data.map((item) => {
+                    {data.map((item, index) => {
                         const outOfStock = !item.inStock || item.inStock === 0;
                         const inCart = isInCart(item);
 
                         return (
                             <MotionBox
                                 key={item.name}
+                                data-testid={"catalog-item-" + {index}}
                                 bg="whiteAlpha.100"
                                 borderRadius="xl"
                                 overflow="hidden"
@@ -154,11 +156,12 @@ export function Catalog() {
                                     >
                                         {item.name}
                                     </Text>
-                                    <Text color="gray.400" fontSize="sm">
+                                    <Text data-testid={"color"} color="gray.400" fontSize="sm">
                                         {item.brand} • {item.color}
                                     </Text>
 
                                     <Text
+                                        data-testid={"price"}
                                         fontSize="xl"
                                         fontWeight="semibold"
                                         mt={2}
@@ -168,10 +171,10 @@ export function Catalog() {
                                     </Text>
 
                                     <Stack mt={3} spacing={0.5}>
-                                        <Text fontSize="sm" color="gray.400">
+                                        <Text data-testid={"sizes"} fontSize="sm" color="gray.400">
                                             Sizes: {item.size.join(", ")}
                                         </Text>
-                                        <Text fontSize="sm" color="gray.400">
+                                        <Text data-testid={"material"} fontSize="sm" color="gray.400">
                                             Material: {item.material}
                                         </Text>
                                     </Stack>
