@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "playwright-demo",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,13 +7,15 @@
     "start": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "playwright test"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.2.4",
     "@chakra-ui/react": "^2.8.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@playwright/test": "^1.56.0",
     "framer-motion": "^12.23.22",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

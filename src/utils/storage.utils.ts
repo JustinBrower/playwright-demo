@@ -8,3 +8,5 @@ export const cancelOrder = (order: Order) => localStorage.setItem(
     "orders",
     JSON.stringify([...fetchOrders().filter((o) => o.id !== order.id), { ...order, status: 'Cancelled' }])
 );
+
+export const clearOrders = () => localStorage.setItem("orders", "[]");
