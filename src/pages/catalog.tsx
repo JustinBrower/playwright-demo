@@ -94,113 +94,130 @@ export function Catalog() {
                         const inCart = isInCart(item);
 
                         return (
-                            <MotionBox
-                                key={item.name}
-                                data-testid={"catalog-item-" + {index}}
-                                bg="whiteAlpha.100"
-                                borderRadius="xl"
-                                overflow="hidden"
-                                border="1px solid"
-                                borderColor="whiteAlpha.200"
-                                transition={{ duration: 0.3 }}
-                                boxShadow="0 4px 20px rgba(0,0,0,0.4)"
-                            >
-                                <Box position="relative">
-                                    <Image
-                                        src={item.imageUrl}
-                                        alt={item.name}
-                                        w="100%"
-                                        h="220px"
-                                        objectFit="cover"
-                                    />
+                          <MotionBox
+                            key={item.name}
+                            data-testid={`catalog-item-${index}`}
+                            bg="whiteAlpha.100"
+                            borderRadius="xl"
+                            overflow="hidden"
+                            border="1px solid"
+                            borderColor="whiteAlpha.200"
+                            transition={{ duration: 0.3 }}
+                            boxShadow="0 4px 20px rgba(0,0,0,0.4)"
+                          >
+                            <Box position="relative">
+                              <Image
+                                src={item.imageUrl}
+                                alt={item.name}
+                                w="100%"
+                                h="220px"
+                                objectFit="cover"
+                              />
 
-                                    {outOfStock && (
-                                        <Badge
-                                            position="absolute"
-                                            top={3}
-                                            right={3}
-                                            colorScheme="red"
-                                            fontSize="0.8em"
-                                            borderRadius="md"
-                                            px={2}
-                                            py={1}
-                                        >
-                                            Sold Out
-                                        </Badge>
-                                    )}
-                                </Box>
+                              {outOfStock && (
+                                <Badge
+                                  position="absolute"
+                                  top={3}
+                                  right={3}
+                                  colorScheme="red"
+                                  fontSize="0.8em"
+                                  borderRadius="md"
+                                  px={2}
+                                  py={1}
+                                >
+                                  Sold Out
+                                </Badge>
+                              )}
+                            </Box>
 
-                                <Box p={4}>
-                                    <Flex mb={2} align="center">
-                                        <Badge
-                                            colorScheme="blue"
-                                            textTransform="capitalize"
-                                            fontSize="0.75em"
-                                        >
-                                            {item.category}
-                                        </Badge>
-                                        <Spacer />
-                                        <Badge
-                                            colorScheme={outOfStock ? "red" : "green"}
-                                            fontSize="0.75em"
-                                        >
-                                            {outOfStock ? "Out of Stock" : `${item.inStock} left`}
-                                        </Badge>
-                                    </Flex>
+                            <Box p={4}>
+                              <Flex mb={2} align="center">
+                                <Badge
+                                  colorScheme="blue"
+                                  textTransform="capitalize"
+                                  fontSize="0.75em"
+                                >
+                                  {item.category}
+                                </Badge>
+                                <Spacer />
+                                <Badge
+                                  colorScheme={outOfStock ? "red" : "green"}
+                                  fontSize="0.75em"
+                                >
+                                  {outOfStock
+                                    ? "Out of Stock"
+                                    : `${item.inStock} left`}
+                                </Badge>
+                              </Flex>
 
-                                    <Text
-                                        fontWeight="bold"
-                                        fontSize="lg"
-                                        color="white"
-                                        noOfLines={1}
-                                    >
-                                        {item.name}
-                                    </Text>
-                                    <Text data-testid={"color"} color="gray.400" fontSize="sm">
-                                        {item.brand} • {item.color}
-                                    </Text>
+                              <Text
+                                fontWeight="bold"
+                                fontSize="lg"
+                                color="white"
+                                noOfLines={1}
+                              >
+                                {item.name}
+                              </Text>
+                              <Text
+                                data-testid={"color"}
+                                color="gray.400"
+                                fontSize="sm"
+                              >
+                                {item.brand} • {item.color}
+                              </Text>
 
-                                    <Text
-                                        data-testid={"price"}
-                                        fontSize="xl"
-                                        fontWeight="semibold"
-                                        mt={2}
-                                        color="teal.300"
-                                    >
-                                        ${item.price.toFixed(2)}
-                                    </Text>
+                              <Text
+                                id={"price"}
+                                data-testid={"price"}
+                                fontSize="xl"
+                                fontWeight="semibold"
+                                mt={2}
+                                color="teal.300"
+                              >
+                                ${item.price.toFixed(2)}
+                              </Text>
 
-                                    <Stack mt={3} spacing={0.5}>
-                                        <Text data-testid={"sizes"} fontSize="sm" color="gray.400">
-                                            Sizes: {item.size.join(", ")}
-                                        </Text>
-                                        <Text data-testid={"material"} fontSize="sm" color="gray.400">
-                                            Material: {item.material}
-                                        </Text>
-                                    </Stack>
+                              <Stack mt={3} spacing={0.5}>
+                                <Text
+                                  data-testid={"sizes"}
+                                  fontSize="sm"
+                                  color="gray.400"
+                                >
+                                  Sizes: {item.size.join(", ")}
+                                </Text>
+                                <Text
+                                  data-testid={"material"}
+                                  fontSize="sm"
+                                  color="gray.400"
+                                >
+                                  Material: {item.material}
+                                </Text>
+                              </Stack>
 
-                                    <Button
-                                        mt={4}
-                                        colorScheme={inCart ? "gray" : "teal"}
-                                        width="full"
-                                        isDisabled={outOfStock}
-                                        onClick={
-                                            inCart ? () => removeFromCart(item) : () => addToCart(item)
-                                        }
-                                        _hover={{
-                                            transform: "translateY(-2px)",
-                                            boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
-                                        }}
-                                        transition="all 0.25s"
-                                    >
-                                        {outOfStock
-                                            ? "Unavailable"
-                                            : inCart
-                                                ? "Remove from Cart"
-                                                : "Add to Cart"}
-                                    </Button>
-                                </Box>
-                            </MotionBox>
+                              <Button
+                                mt={4}
+                                colorScheme={inCart ? "gray" : "teal"}
+                                width="full"
+                                isDisabled={outOfStock}
+                                onClick={
+                                  inCart
+                                    ? () => removeFromCart(item)
+                                    : () => addToCart(item)
+                                }
+                                _hover={{
+                                  transform: "translateY(-2px)",
+                                  boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
+                                }}
+                                transition="all 0.25s"
+                              >
+                                {outOfStock
+                                  ? "Unavailable"
+                                  : inCart
+                                  ? "Remove from Cart"
+                                  : "Add to Cart"}
+                              </Button>
+                            </Box>
+                          </MotionBox>
                         );
                     })}
                 </SimpleGrid>

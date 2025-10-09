@@ -1,50 +1,60 @@
 import { test } from "../fixtures";
-// import fs from "fs";
+import * as fs from "fs";
 
 test.describe("Scraping", () => {
   test("Finds the catalog data on the page and dumps it to a JSON file locally", async ({page, login}) => {
     await page.goto("/");
     await login();
 
-    await page.waitForSelector("img[alt]");
+    await page.waitForSelector("img[alt]"); 
 
-  const catalogData = await page.$$eval("img[alt]", (images) => {
-    return (images as HTMLImageElement[]).map((img) => {
-      const card = img.closest("div");
+    const items = await page.$$eval('[data-testid^="catalog-item-"]', (elements) =>
+      elements.map((el) => {
+        const name = el.querySelector('text[font-size="lg"]')?.textContent?.trim();
+        const brandColor = el
+          .querySelector('[data-testid="color"]')
+          ?.textContent?.trim();
+        const price = el
+          .querySelector('[data-testid="price"]')
+          ?.textContent?.trim();
+        const sizes = el
+          .querySelector('[data-testid="sizes"]')
+          ?.textContent?.replace("Sizes: ", "")
+          .trim();
+        const material = el
+          .querySelector('[data-testid="material"]')
+          ?.textContent?.replace("Material: ", "")
+          .trim();
+        const imageUrl = el.querySelector("img")?.src;
+        const category = el
+          .querySelector('badge[color-scheme="blue"]')
+          ?.textContent?.trim();
+        const stockBadge = el
+          .querySelector('badge[color-scheme="red"], badge[color-scheme="green"]')
+          ?.textContent?.trim();
+        const outOfStock =
+          stockBadge?.toLowerCase().includes("out of stock") ||
+          stockBadge?.toLowerCase().includes("sold out");
 
-      console.log(card?.querySelector('[data-testid="price"]'));
+        return {
+          name,
+          brandColor,
+          price,
+          sizes,
+          material,
+          imageUrl,
+          category,
+          stockBadge,
+          outOfStock,
+        };
+      })
+    );
 
-      const name = img.alt;
-      const imageUrl = img.src;
 
-      const price = parseFloat(
-        (
-          card?.querySelector('[data-testid="price"]')?.textContent || ""
-        ).replace(/[^0-9.]/g, "")
-      );
-
-      const sizes =
-        card?.querySelector('[data-testid="sizes"]')?.textContent ||
-        "".split(",").map((s) => s.trim());
-
-      const material =
-        card?.querySelector('[data-testid="material"]')?.textContent || "";
-
-      return {
-        name,
-        imageUrl,
-        price,
-        sizes,
-        material,
-      };
-    });
-  });
-
-    // Write to JSON file
-    // fs.writeFileSync("catalog-data.json", JSON.stringify(catalogData, null, 2));
+    fs.writeFileSync("catalog-data.json", JSON.stringify(items, null, 2));
     console.log(
       "Catalog data saved to catalog-data.json",
-      JSON.stringify(catalogData, null, 2)
+      JSON.stringify(items, null, 2)
     );
   });
 });
